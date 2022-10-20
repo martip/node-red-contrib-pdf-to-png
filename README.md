@@ -6,7 +6,7 @@ A [Node-RED](https://nodered.org/) node that converts PDF pages to PNG images, u
 
 Either use the `Node-RED Menu - Manage Palette - Install`, or run the following command in your Node-RED user directory - typically `~/.node-red`
 
-    npm install node-red-contrib-pdf-to-png
+    npm install @martip/node-red-pdf-to-png
 
 ## Usage
 
