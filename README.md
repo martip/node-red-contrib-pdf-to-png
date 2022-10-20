@@ -1,4 +1,4 @@
-# node-red-pdf-to-png
+# @martip/node-red-pdf-to-png
 
 A [Node-RED](https://nodered.org/) node that converts PDF pages to PNG images, using [PDF.js](https://mozilla.github.io/pdf.js/) and [node-canvas](https://github.com/Automattic/node-canvas).
 
