@@ -1,0 +1,112 @@
+<script type="text/javascript">
+
+  function validate(v) {
+    if ($('#node-input-pagemode').val() !== 'range') {
+      return true;
+    }
+    try {
+      const from = $('#node-input-pagefrom').val();
+      const to = $('#node-input-pageto').val();
+      return (parseInt(from) <= parseInt(to));
+    } catch(e) {
+      return false;
+    }
+  }
+
+  RED.nodes.registerType('pdf-to-png', {
+    category: 'function',
+    color: '#aaaa66',
+    defaults: {
+      name: { value: '' },
+      pagemode: { value: 'all' },
+      pagefrom: { value: '', validate },
+      pageto: { value: '', validate },
+      zoom: { value: '2.0' },
+      compression: { value: 3 },
+      resolution: { value: 150 }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'pdf-to-png.svg',
+    label: function() {
+      return this.name || 'pdf to png';
+    },
+    paletteLabel: 'pdf to png',
+    oneditprepare: function() {
+      $('#node-input-pagemode').on('change', function(e) {
+        const val = $(this).val();
+        $('.node-row-pagemode-range').toggle(val === 'range');
+      });
+      $('#node-input-compression').spinner({ min: 0, max: 9, step: 1 });
+      $('#node-input-resolution').spinner({ min: 72, max: 4800, step: 1 });
+    }
+  });
+  </script>
+  
+<script type="text/html" data-template-name="pdf-to-png">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-pagemode"><i class="fa fa-copy"></i> Pages</label>
+    <select type="text" id="node-input-pagemode" style="width: 300px;">
+        <option value="all">All</option>
+        <option value="first">First</option>
+        <option value="range">Range</option>
+    </select>
+  </div>
+  <div class="node-row-pagemode-range">
+    <div class="form-row">
+      <label></label>
+      from: <input type="text" id="node-input-pagefrom" style="width:100px;"/>
+      &nbsp;&nbsp;to: <input type="text" id="node-input-pageto" style="width:100px;"/>
+    </div>
+  </div>
+  <div class="form-row">
+    <label for="node-input-zoom"><i class="fa fa-search-plus"></i> Zoom</label>
+    <select type="text" id="node-input-zoom" style="width: 300px;">
+      <option value="0.1">10%</option>
+      <option value="0.25">25%</option>
+      <option value="0.5">50%</option>
+      <option value="1.0">100%</option>
+      <option value="1.5">150%</option>
+      <option value="2.0">200%</option>
+      <option value="3.0">300%</option>
+      <option value="4.0">400%</option>
+      <option value="8.0">800%</option>
+      <option value="16.0">1600%</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <label for="node-input-compression"><i class="fa fa-compress"></i> Compression</label>
+    <input type="text" id="node-input-compression" style="width:40px !important" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-resolution"><i class="fa fa-arrows-alt"></i> Resolution</label>
+    <input type="text" id="node-input-resolution" style="width:40px !important" />&nbsp;dpi
+  </div>
+</script>
+
+<script type="text/html" data-help-name="pdf-to-png">
+  <p>Converts PDF pages to PNG images, using <strong>PDF.js</strong> and <strong>node-canvas</strong>.</p>
+  
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+      <dt>payload<span class="property-type">buffer</span></dt>
+      <dd>The PDF content.</dd>
+  </dl>
+    
+  <h3>Outputs</h3>
+  <dl class="message-properties">
+    <dt>payload<span class="property-type">array</span></dt>
+    <dd>An array of buffers of the converted images.</dd>
+  </dl>
+
+  <h3>References</h3>
+  <ul>
+    <li><a href="https://mozilla.github.io/pdf.js/">PDF.js</a> - details of the <strong>PDF.js</strong> library</li>
+    <li><a href="https://github.com/Automattic/node-canvas/">node-canvas</a> - details of the <strong>node-canvas</strong> library</li>
+  </ul>
+
+</script>

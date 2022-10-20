@@ -1,0 +1,26 @@
+{
+  "name": "node-red-contrib-pdf-to-png",
+  "version": "1.0.0",
+  "description": "Node-RED node for converting PDF pages to PNG images, using the PDF.js library.",
+  "keywords": [
+    "node-red",
+    "pdf to png",
+    "pdf",
+    "png"
+  ],
+  "author": "Paolo Martino",
+  "license": "MIT",
+  "dependencies": {
+    "canvas": "2.10.1",
+    "pdfjs-dist": "2.10.377"
+  },
+  "node-red": {
+    "version": ">=1.0.0",
+    "nodes": {
+      "pdf-to-png": "pdf-to-png/pdf-to-png.js"
+    }
+  },
+  "engines": {
+    "node": ">= 10"
+  }
+}
