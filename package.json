@@ -15,7 +15,7 @@
   "author": "Paolo Martino",
   "license": "MIT",
   "dependencies": {
-    "canvas": "2.10.1",
+    "canvas": "^2.10.2",
     "pdfjs-dist": "2.10.377"
   },
   "node-red": {
