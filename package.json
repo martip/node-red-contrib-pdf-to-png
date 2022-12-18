@@ -1,6 +1,6 @@
 {
   "name": "@martip/node-red-pdf-to-png",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Node-RED node for converting PDF pages to PNG images, using the PDF.js library.",
   "repository": {
     "type": "git",
