@@ -4,7 +4,7 @@ A [Node-RED](https://nodered.org/) node that converts PDF pages to PNG images, u
 
 ## Install
 
-***N.B*** If you're on a Apple Mac running on Apple Silicon (M1, M2 etc.), please read below.
+***N.B*** If you're on an Apple Mac running on Apple Silicon (M1, M2 etc.), please read below.
 
 Either use the `Node-RED Menu - Manage Palette - Install`, or run the following command in your Node-RED user directory - typically `~/.node-red`
 
