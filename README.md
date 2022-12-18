@@ -21,7 +21,9 @@ You can still use this node but you'll have to install it manually. Be sure to h
 > git clone https://github.com/martip/node-red-pdf-to-png.git
 > cd node-red-pdf-to-png
 > cwd=$(pwd)
+> npm uninstall canvas
 > npm install
+> npm install canvas
 > cd ~/.node-red
 > npm install $cwd
 > unset cwd
